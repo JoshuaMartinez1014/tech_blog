@@ -10,7 +10,31 @@ router.get("/dashboard", async (req, res) => {
 });
 
 router.get("/dashboard/new", async (req, res) => {
-  res.render("newPost");
+  res.render("newPost", { layout: "dashboard" });
+});
+
+router.get("/login", async (req, res) => {
+  res.render("login", { layout: "dashboard" });
+});
+
+router.post("/login", async (req, res) => {
+  try {
+    const newPost = await req.body;
+    console.log({ newPost: newPost });
+    res.redirect("/dashboard");
+  } catch (err) {
+    console.log({ error: err });
+  }
+});
+
+router.post("/dashboard/new", async (req, res) => {
+  try {
+    const newPost = await req.body;
+    console.log({ newPost: newPost });
+    res.redirect("/dashboard");
+  } catch (err) {
+    console.log({ error: err });
+  }
 });
 /* router.get('/', async (req, res) => {
   try {
