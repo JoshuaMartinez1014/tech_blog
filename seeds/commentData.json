@@ -1,0 +1,17 @@
+[
+  {
+    "description": "Great post, thanks for sharing!",
+    "user_id": 1,
+    "blogPost_id": 1
+  },
+  {
+    "description": "I found this post really informative!",
+    "user_id": 2,
+    "blogPost_id": 1
+  },
+  {
+    "description": "Interesting article, I enjoyed reading it!",
+    "user_id": 3,
+    "blogPost_id": 2
+  }
+]

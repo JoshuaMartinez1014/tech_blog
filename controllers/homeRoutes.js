@@ -6,10 +6,10 @@ router.get("/", async (req, res) => {
   res.render("insert");
 });
 router.get("/dashboard", async (req, res) => {
-  res.render("insert", { layout: "main" });
+  res.render("insert", { layout: "dashboard" });
 });
 
-router.get("/newPost", async (req, res) => {
+router.get("/dashboard/new", async (req, res) => {
   res.render("newPost");
 });
 /* router.get('/', async (req, res) => {
