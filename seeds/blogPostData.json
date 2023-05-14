@@ -1,0 +1,17 @@
+[
+  {
+    "title": "10 Tips for Writing Clean Code",
+    "description": "In this post, we'll discuss 10 tips for writing clean code that is easy to read, maintain, and scale.",
+    "user_id": 1
+  },
+  {
+    "title": "Understanding Recursion in JavaScript",
+    "description": "Recursion is a powerful technique for solving complex problems in JavaScript. In this post, we'll explore how recursion works and how you can use it in your programs.",
+    "user_id": 2
+  },
+  {
+    "title": "An Introduction to Machine Learning",
+    "description": "Machine learning is a rapidly growing field that has the potential to transform the way we live and work. In this post, we'll introduce the basics of machine learning and explain how it works.",
+    "user_id": 3
+  }
+]
