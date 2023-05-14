@@ -16,12 +16,12 @@ BlogPost.init(
       allowNull: false,
     },
     time: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
     description: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
     },
     user_id: {
       type: DataTypes.INTEGER,

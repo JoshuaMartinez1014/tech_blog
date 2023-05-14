@@ -6,9 +6,12 @@ router.get("/", async (req, res) => {
   res.render("insert");
 });
 router.get("/dashboard", async (req, res) => {
-  res.render("insert", { layout: "dashboard" });
+  res.render("insert", { layout: "main" });
 });
 
+router.get("/newPost", async (req, res) => {
+  res.render("newPost");
+});
 /* router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
