@@ -1,29 +1,32 @@
-const router = require('express').Router();
-const { User } = require('../../models');
+const router = require("express").Router();
+const { User, BlogPost } = require("../../models");
 
-router.post('/', async (req, res) => {
+//      /api/
+
+//  Signup
+router.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
-      res.status(200).json(userData);
+      console.log(userData);
+      res.redirect("/");
     });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
@@ -32,29 +35,48 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
 
+      /* res.json({ user: userData, message: "You are now logged in!" }); */
+      res.redirect("/");
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
+  console.log({ loggedIn: req.session.logged_in });
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(204).redirect("/");
     });
   } else {
-    res.status(404).end();
+    res.status(204).redirect("/");
+  }
+});
+
+// create new blogpost
+// api/users/dashboard/new
+router.post("/dashboard/new", async (req, res) => {
+  try {
+    const { title, description } = req.body;
+    const user_id = req.session.user_id;
+    const newPost = await BlogPost.create({
+      title: title,
+      description: description,
+      user_id: user_id,
+    });
+    console.log({ newPost: newPost });
+    res.redirect("/dashboard");
+  } catch (err) {
+    console.log({ error: err });
   }
 });
 

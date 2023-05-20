@@ -1,12 +1,25 @@
 const router = require("express").Router();
-/* const { Project, User } = require("../models"); */
-/* const withAuth = require("../utils/auth"); */
+const { User, BlogPost, Cart } = require("../models/index");
+const withAuth = require("../utils/auth");
 
+// takes you to the home page
 router.get("/", async (req, res) => {
-  res.render("insert");
+  res.render("insert", { logged_in: req.session.logged_in });
 });
-router.get("/dashboard", async (req, res) => {
-  res.render("insert", { layout: "dashboard" });
+
+router.get("/dashboard", withAuth, async (req, res) => {
+  const user = await User.findByPk(req.session.user_id);
+  /* const userPosts = await User.getBlogPosts(req.session.user_id); */
+  const userPosts = await Cart.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+  });
+  const userPostFix = userPosts.map((userpost) =>
+    userpost.get({ plain: true })
+  );
+  console.log(userPostFix);
+  res.render("insert", { layout: "dashboard", user, userPostFix });
 });
 
 router.get("/dashboard/new", async (req, res) => {
@@ -14,28 +27,20 @@ router.get("/dashboard/new", async (req, res) => {
 });
 
 router.get("/login", async (req, res) => {
-  res.render("login", { layout: "dashboard" });
+  res.render("login", {
+    layout: "dashboard",
+    loginFailed: req.query?.login === "failed",
+  });
 });
 
-router.post("/login", async (req, res) => {
-  try {
-    const newPost = await req.body;
-    console.log({ newPost: newPost });
-    res.redirect("/dashboard");
-  } catch (err) {
-    console.log({ error: err });
-  }
+router.get("/signup", async (req, res) => {
+  res.render("signup", { layout: "dashboard" });
 });
 
-router.post("/dashboard/new", async (req, res) => {
-  try {
-    const newPost = await req.body;
-    console.log({ newPost: newPost });
-    res.redirect("/dashboard");
-  } catch (err) {
-    console.log({ error: err });
-  }
+router.get("/logout", async (req, res) => {
+  res.render("logout");
 });
+
 /* router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data

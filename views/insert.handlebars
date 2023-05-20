@@ -11,3 +11,16 @@
       >Post by Josh on 5/8/2020</em></p>
   </div>
 </div>
+
+{{#each userPostFix}}
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title" style="font-size: 1.8rem;">{{this.title}}</div>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{this.description}}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em
+        >Post by {{user}} on {{this.time}}</em></p>
+    </div>
+  </div>
+{{/each}}

@@ -1,8 +1,5 @@
-{{#if loginFailed}}
-  <h3 class="text-primary">(Please Login Before Accessing)</h3>
-{{/if}}
-<h1>LOGIN</h1>
-<form action="/api/users/login" method="POST">
+<h1>SIGNUP</h1>
+<form action="/api/users" method="POST">
   <div class="form-group">
     <label for="name"><strong>First Name:</strong></label><br />
     <input
@@ -41,7 +38,6 @@
     type="submit"
     class="btn btn-primary"
     style="width: 20vw"
-  >Login</button>
+  >Create</button>
   <br />
-  <a href="/signup">Sign up here, to make a new account!</a>
 </form>
