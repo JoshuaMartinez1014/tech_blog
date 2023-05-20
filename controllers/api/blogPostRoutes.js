@@ -85,9 +85,9 @@ router.post("/update/:id", async (req, res) => {
 });
 
 // api/blogpost/update/:id
-router.post("/delete/:id", async (req, res) => {
+router.get("/delete/:id", async (req, res) => {
   try {
-    BlogPost.delete({
+    BlogPost.destroy({
       where: {
         id: req.params.id,
       },
