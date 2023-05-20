@@ -51,8 +51,52 @@ router.get("/search/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("update/:id", async (req, res) => {
-  const blogpostData = await BlogPost.findByPk(req.params.id);
+// api/blogpost/update/:id
+router.get("/update/:id", async (req, res) => {
+  try {
+    const blogpostData = await BlogPost.findByPk(req.params.id);
+    console.log({ blogpostData });
+    const BlogPosts = blogpostData.get({ plain: true });
+    console.log({ BlogPosts });
+
+    res.render("updatePost", BlogPosts);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// update dashboard post
+// api/blogpost/update/:id
+router.post("/update/:id", async (req, res) => {
+  try {
+    BlogPost.update(
+      { ...req.body },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    console.log("Update Success");
+    res.redirect(`/dashboard`);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// api/blogpost/update/:id
+router.post("/delete/:id", async (req, res) => {
+  try {
+    BlogPost.delete({
+      where: {
+        id: req.params.id,
+      },
+    });
+    console.log("Delete Success");
+    res.redirect(`/dashboard`);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // api/blogpost/comment/new/:id

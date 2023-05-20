@@ -19,7 +19,7 @@
           <em>Post by {{this.user.name}} on {{this.time}}</em></a><br />
       </div>
       <br />
-      <a href="#"><button>Update Post</button><a>
+      <a href="api/blogpost/update/{{this.id}}"><button>Update Post</button><a>
       <a href="#"><button>Delete Post</button><a>
 
     </div>
@@ -63,7 +63,7 @@
       <div class="card-text"><strong>{{BlogPostId.description}}</strong></div>
       <br />
       <div class="card-text">
-        <a href="/api/blogpost/{{BlogPostId.id}}">
+         <a href="/api/blogpost/search/{{BlogPostId.id}}">
 
           <em>Post by
             {{BlogPostId.user.name}}
