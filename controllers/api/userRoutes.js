@@ -62,22 +62,4 @@ router.post("/logout", (req, res) => {
   }
 });
 
-// create new blogpost
-// api/users/dashboard/new
-router.post("/dashboard/new", async (req, res) => {
-  try {
-    const { title, description } = req.body;
-    const user_id = req.session.user_id;
-    const newPost = await BlogPost.create({
-      title: title,
-      description: description,
-      user_id: user_id,
-    });
-    console.log({ newPost: newPost });
-    res.redirect("/dashboard");
-  } catch (err) {
-    console.log({ error: err });
-  }
-});
-
 module.exports = router;

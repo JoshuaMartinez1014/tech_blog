@@ -1,0 +1,15 @@
+<form action="/api/blogpost/comment/{{blogpostId}}" method="POST">
+
+  <div class="form-group">
+    <label for="description"><strong>Description:</strong></label><br />
+    <textarea
+      class="form-control"
+      id="description"
+      name="description"
+      rows="5"
+      style="width: 70vw; font-size: 24px; padding: 10px;"
+    ></textarea>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary" style="width: 20vw">Add Comment</button>
+</form>

@@ -1,26 +1,95 @@
 {{! Blog Post cards }}
-<div class="card">
-  <div class="card-header">
-    <div class="card-title" style="font-size: 1.8rem;">Why MVC is so important</div>
-  </div>
-  <div class="card-body">
-    <p class="card-text">MVC allows developers to maintain a true separation of
-      concerns, dividing their code between the model layer for data, the view
-      layer for design, and the controller layer for application logic.
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em
-      >Post by Josh on 5/8/2020</em></p>
-  </div>
-</div>
 
+{{! Dashboard blogposts }}
 {{#each userPostFix}}
   <div class="card">
     <div class="card-header">
-      <div class="card-title" style="font-size: 1.8rem;">{{this.title}}</div>
+      <div class="card-title" style="font-size: 1.8rem;">
+        <div>{{this.title}}</div>
+
+      </div>
     </div>
     <div class="card-body">
-      <p class="card-text">{{this.description}}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em
-        >Post by {{user}} on {{this.time}}</em></p>
+
+      <div class="card-text"><strong>{{this.description}}</strong></div>
+      <br />
+      <div class="card-text">
+        <a href="/api/blogpost/search/{{this.id}}">
+
+          <em>Post by {{this.user.name}} on {{this.time}}</em></a><br />
+      </div>
+      <br />
+      <a href="#"><button>Update Post</button><a>
+      <a href="#"><button>Delete Post</button><a>
+
+    </div>
+    <br />
+  </div>
+{{/each}}
+
+{{! Homepage list of blogs & single blogpost details }}
+{{#each BlogPosts}}
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title" style="font-size: 1.8rem;">
+        <div>{{this.title}}</div>
+
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="card-text"><strong>{{this.description}}</strong></div>
+      <br />
+      <div class="card-text">
+        <a href="/api/blogpost/search/{{this.id}}">
+
+          <em>Post by {{this.user.name}} on {{this.time}}</em></a><br /><br />
+      </div>
+    </div>
+  </div>
+{{/each}}
+
+{{! home single blogpost details }}
+{{#if BlogPostId}}
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title" style="font-size: 1.8rem;">
+        <div>{{BlogPostId.title}}</div>
+
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="card-text"><strong>{{BlogPostId.description}}</strong></div>
+      <br />
+      <div class="card-text">
+        <a href="/api/blogpost/{{BlogPostId.id}}">
+
+          <em>Post by
+            {{BlogPostId.user.name}}
+            on
+            {{BlogPostId.time}}</em></a><br /><br />
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer flex-row justify-center">
+    <a href="/api/blogpost/comment/{{BlogPostId.id}}">➕ New Comment</a>
+  </footer>
+  <br />
+{{/if}}
+
+{{! home blogPostComments }}
+{{#each comments}}
+  <div class="card">
+    <div class="card-body">
+      <div class="card-text"><strong>{{this.description}}</strong></div>
+      <br />
+      <div class="card-text">
+        {{!-- <a href="/api/blogpost/{{this.id}}"> --}}
+
+        <em>Comment by {{this.user.name}} on {{this.time}}</em>
+      </div>
     </div>
   </div>
 {{/each}}
