@@ -129,7 +129,7 @@ router.post("/comment/:id", async (req, res) => {
 
 /* ======================================================== */
 
-router.post("/", withAuth, async (req, res) => {
+/* router.post("/", withAuth, async (req, res) => {
   try {
     const newProject = await Project.create({
       ...req.body,
@@ -161,6 +161,6 @@ router.delete("/:id", withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-});
+}); */
 
 module.exports = router;
