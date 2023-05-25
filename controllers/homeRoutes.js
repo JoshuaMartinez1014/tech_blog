@@ -48,7 +48,7 @@ router.get("/dashboard/new", async (req, res) => {
 
 // login page
 router.get("/login", async (req, res) => {
-  res.render("login", {
+  res.render("logIn", {
     layout: "dashboard",
     loginFailed: req.query?.login === "failed",
   });
