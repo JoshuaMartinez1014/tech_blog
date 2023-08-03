@@ -47,11 +47,12 @@ WHEN I am idle on the site for more than a set time
 THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 ```
 
-## Mock-Up
+## Screenshot
 
-The following animation demonstrates the application functionality:
+Screenshot of Application
 
-![Animation cycles through signing into the app, clicking on buttons, and updating blog posts.](./screenshots/Untitled_%20Jun%204%2C%202023%202_52%20AM.webm)
+![Screenshot of Application Login.](./jmart-tech-blog.herokuapp.com_login_login=failed.png)
+![Screenshot of Application.](./jmart-tech-blog.herokuapp.com_ (1).png)
 
 - Backup link to google drive video: https://drive.google.com/file/d/1kk8SYtVDzXTxvWq6uAnkrGGo3DZD8xEm/view
   ( forgot to include logout feature, feature does work )
