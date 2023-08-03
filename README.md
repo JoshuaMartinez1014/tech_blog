@@ -52,7 +52,7 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 Screenshot of Application
 
 ![Screenshot of Application Login.](./jmart-tech-blog.herokuapp.com_login_login=failed.png)
-![Screenshot of Application.](./jmart-tech-blog.herokuapp.com_ (1).png)
+![Screenshot of Application.](./tech-blog-main.png)
 
 - Backup link to google drive video: https://drive.google.com/file/d/1kk8SYtVDzXTxvWq6uAnkrGGo3DZD8xEm/view
   ( forgot to include logout feature, feature does work )
