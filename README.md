@@ -1,9 +1,4 @@
-# 14 Model-View-Controller (MVC): Tech Blog
-
-## Your Task
-
-Create a site where users can come together and discuss relevent tech information in the form of blogging. The user can make their own posts, or comment on other posts.
-The site will be able to keep user information by allowing users to create accounts and logging into them.
+# (MVC): Tech Blog
 
 ## User Story
 
@@ -11,6 +6,7 @@ The site will be able to keep user information by allowing users to create accou
 AS A developer who writes about tech
 I WANT a CMS-style blog site
 SO THAT I can publish articles, blog posts, and my thoughts and opinions
+And hear from the tech community and others 
 ```
 
 ## Acceptance Criteria
